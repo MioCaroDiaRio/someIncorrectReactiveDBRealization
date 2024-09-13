@@ -31,6 +31,11 @@ public class CatJpaController {
         return catService.getCatById(id);
     }
 
+    @GetMapping("/getCatByIdTest")
+    public CatEntity getCatByIdTest(@RequestParam Long id) {
+        return catService.getCatById(id);
+    }
+
     @PostMapping
     public CatEntity createCat(@RequestBody CatEntity cat) {
         return catService.createCat(cat);

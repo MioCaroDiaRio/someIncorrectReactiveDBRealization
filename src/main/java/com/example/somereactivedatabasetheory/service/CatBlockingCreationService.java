@@ -20,7 +20,7 @@ public class CatBlockingCreationService {
 
     public void createCats() {
         long startTime = System.currentTimeMillis();
-        IntStream.range(0, 10000).forEach(i -> {
+        IntStream.range(0, 100).forEach(i -> {
             CatEntity cat = new CatEntity();
             cat.setName("Cat " + i);
             cat.setColor("Color " + i);
@@ -31,7 +31,7 @@ public class CatBlockingCreationService {
     }
     public void createCatsAsync() {
         long startTime = System.currentTimeMillis();
-        List<CompletableFuture<Void>> futures = IntStream.range(0, 10000)
+        List<CompletableFuture<Void>> futures = IntStream.range(0, 100)
                 .mapToObj(i -> CompletableFuture.runAsync(() -> {
                     CatEntity cat = new CatEntity();
                     cat.setName("Cat " + i);

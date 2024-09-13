@@ -1,5 +1,7 @@
 package com.example.somereactivedatabasetheory.configuration;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +19,14 @@ public class JpaConfig {
 
     @Bean
     public DataSource jpaDataSource() {
-        return DataSourceBuilder.create()
-                .driverClassName("org.postgresql.Driver")
-                .url("jdbc:postgresql://localhost:5432/root")
-                .username("root")
-                .password("root")
-                .build();
+        HikariConfig config = new HikariConfig();
+        config.setDriverClassName("org.postgresql.Driver");
+        config.setJdbcUrl("jdbc:postgresql://localhost:5432/root");
+        config.setUsername("root");
+        config.setPassword("root");
+        config.setMinimumIdle(1);
+        config.setMaximumPoolSize(8);
+        return new HikariDataSource(config);
     }
 
 

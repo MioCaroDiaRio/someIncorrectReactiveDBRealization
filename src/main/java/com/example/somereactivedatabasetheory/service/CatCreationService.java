@@ -19,7 +19,7 @@ public class CatCreationService {
 
     public Mono<Void> createCats() {
         long startTime = System.currentTimeMillis();
-        return Flux.range(0, 10000)
+        return Flux.range(0, 100)
                 .flatMap(i -> {
                     CatEntity cat = new CatEntity();
                     cat.setName("Cat " + i);

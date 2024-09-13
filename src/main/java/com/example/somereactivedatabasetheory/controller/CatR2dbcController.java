@@ -27,6 +27,10 @@ public class CatR2dbcController {
     public Mono<CatEntity> getCatById(@RequestParam Long id) {
         return catService.getCatById(id);
     }
+    @GetMapping("/getCatByIdTest")
+    public Mono<CatEntity> getCatByIdTest(@RequestParam Long id) {
+        return catService.getCatById(id);
+    }
 
     @PostMapping
     public Mono<CatEntity> createCat(@RequestBody CatEntity cat) {
